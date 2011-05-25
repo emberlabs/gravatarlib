@@ -55,6 +55,11 @@ class Gravatar
 	 */
 	protected $use_secure_url = false;
 
+	/**
+	 * @var string - A temporary internal cache of the URL parameters to use.
+	 */
+	protected $param_cache = NULL;
+
 	/**#@+
 	 * @var string - URL constants for the avatar images
 	 */
@@ -80,6 +85,9 @@ class Gravatar
 	 */
 	public function setAvatarSize($size)
 	{
+		// Wipe out the param cache.
+		$this->param_cache = NULL;
+
 		if(!ctype_digit($size))
 		{
 			throw new InvalidArgumentException('Avatar size specified must be an integer');
@@ -121,6 +129,9 @@ class Gravatar
 			return $this;
 		}
 
+		// Wipe out the param cache.
+		$this->param_cache = NULL;
+
 		// Check $image against recognized gravatar "defaults", and if it doesn't match any of those we need to see if it is a valid URL.
 		$_image = strtolower($image);
 		$valid_defaults = array('404' => 1, 'mm' => 1, 'identicon' => 1, 'monsterid' => 1, 'wavatar' => 1);
@@ -161,6 +172,9 @@ class Gravatar
 	 */
 	public function setMaxRating($rating)
 	{
+		// Wipe out the param cache.
+		$this->param_cache = NULL;
+
 		$rating = strtolower($rating);
 		$valid_ratings = array('g' => 1, 'pg' => 1, 'r' => 1, 'x' => 1);
 		if(!isset($valid_ratings[$rating]))
@@ -224,23 +238,24 @@ class Gravatar
 		// Tack the email hash onto the end.
 		$url .= $this->getEmailHash($email);
 
-		// Time to figure out our request params
-		$params = array();
-		$params[] = 's=' . $this->getAvatarSize();
-		$params[] = 'r=' . $this->getMaxRating();
-		if($this->getDefaultImage())
+		// Check to see if the param_cache property has been populated yet
+		if($this->param_cache === NULL)
 		{
-			$params[] = 'd=' . $this->getDefaultImage();
-		}
+			// Time to figure out our request params
+			$params = array();
+			$params[] = 's=' . $this->getAvatarSize();
+			$params[] = 'r=' . $this->getMaxRating();
+			if($this->getDefaultImage())
+			{
+				$params[] = 'd=' . $this->getDefaultImage();
+			}
 
-		// Toss the params onto the end..
-		if(!empty($params))
-		{
-			$url .= '?' . implode('&amp;', $params);
+			// Stuff the request params into the param_cache property for later reuse
+			$this->params_cache = (!empty($params)) ? '?' . implode('&amp;', $params) : '';
 		}
 
 		// And we're done.
-		return $url;
+		return $url . $this->params_cache;
 	}
 
 	/**
