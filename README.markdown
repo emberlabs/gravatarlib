@@ -36,12 +36,10 @@ We'll assume you're using this git repository as a git submodule, and have it lo
 ### setting the default image
 
 Gravatar provides several pre-fabricated default images for use when the email address provided does not have a gravatar or when the gravatar specified exceeds your maximum allowed content rating.
-
 The provided images are 'mm', 'identicon', 'monsterid', and 'wavatar'.  To set the default iamge to use on your site, use the method `\Codebite\GravatarLib\Gravatar->setDefaultImage()`
-
 In addition, you can also set your own default image to be used by providing a valid URL to the image you wish to use.
 
-Here's a couple examples...
+Here are a couple of examples...
 
 ``` php
 	$gravatar->setDefaultImage('wavatar');
@@ -51,12 +49,12 @@ Here's a couple examples...
 	$gravatar->setDefaultImage('http://yoursitehere.com/path/to/image.png');
 ```
 
-**WARNING**: If an invalid default image is specified (both an invalid prefab default image and an invalid URL is provided), this method will throw an exception of class `\InvalidArgumentException`.
+#### WARNING
+If an invalid default image is specified (both an invalid prefab default image and an invalid URL is provided), this method will throw an exception of class `\InvalidArgumentException`.
 
 ### setting avatar size
 
 Gravatar allows avatar images ranging from 1px to 512px in size -- and you, the developer or site administrator can specify the exact size of avatar that you want.
-
 By default, the avatar size provided is 80px.  To set the avatar size for use on your site, use the method `\Codebite\GravatarLib\Gravatar->setAvatarSize()`, and specify the avatar size with an integer representing the size in pixels.
 
 An example of setting the avatar size is provided below:
@@ -65,12 +63,12 @@ An example of setting the avatar size is provided below:
 	$gravatar->setAvatarSize(184);
 ```
 
-**WARNING**: If an invalid size (less than 1, greater than 512) or a non-integer value is specified, this method will throw an exception of class `\InvalidArgumentException`.
+#### WARNING
+If an invalid size (less than 1, greater than 512) or a non-integer value is specified, this method will throw an exception of class `\InvalidArgumentException`.
 
 ### setting the maximum content rating
 
 Gravatar provides four levels for rating avatars by, which are named similar to entertainment media ratings scales used in the United States.  They are, by order of severity (first is safe for everyone to see, last is explicit), "g", "pg", "r", and "x".
-
 By default, the maximum content rating is set to "g".  You can set the maximum allowable rating on avatars embedded within your site by using the method `\Codebite\GravatarLib\Gravatar->setMaxRating()`.  Please note that any avatars that do not fall under your maximum content rating will be replaced with the default image you have specified.
 
 Here's an example of how to set the maximum content rating:
@@ -79,14 +77,13 @@ Here's an example of how to set the maximum content rating:
 	$gravatar->setMaxRating('r');
 ```
 
-**WARNING**: If an invalid maximum rating is specified, this method will throw an exception of class `\InvalidArgumentException`.
+#### WARNING
+If an invalid maximum rating is specified, this method will throw an exception of class `\InvalidArgumentException`.
 
 ### enabling secure images
 
 If your site is served over HTTPS, you'll likely want to serve gravatars over HTTPS as well to avoid "mixed content warnings".
-
 To enable "secure images" mode, call the method `\Codebite\GravatarLib\Gravatar->enableSecureImages()` before generating any gravatar URLs.
-
 To check to see if you are using "secure images" mode, call the method `\Codebite\GravatarLib\Gravatar->usingSecureImages()`, which will return a boolean value regarding whether or not secure images mode is enabled.
 
 ### twig integration
