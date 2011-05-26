@@ -49,6 +49,8 @@ Here are a couple of examples...
 	$gravatar->setDefaultImage('http://yoursitehere.com/path/to/image.png');
 ```
 
+
+
 #### WARNING
 If an invalid default image is specified (both an invalid prefab default image and an invalid URL is provided), this method will throw an exception of class `\InvalidArgumentException`.
 
@@ -63,6 +65,8 @@ An example of setting the avatar size is provided below:
 	$gravatar->setAvatarSize(184);
 ```
 
+
+
 #### WARNING
 If an invalid size (less than 1, greater than 512) or a non-integer value is specified, this method will throw an exception of class `\InvalidArgumentException`.
 
@@ -76,6 +80,8 @@ Here's an example of how to set the maximum content rating:
 ``` php
 	$gravatar->setMaxRating('r');
 ```
+
+
 
 #### WARNING
 If an invalid maximum rating is specified, this method will throw an exception of class `\InvalidArgumentException`.
