@@ -179,7 +179,7 @@ class Gravatar
 		$valid_ratings = array('g' => 1, 'pg' => 1, 'r' => 1, 'x' => 1);
 		if(!isset($valid_ratings[$rating]))
 		{
-			throw new InvalidArgumentException(sprintf('Invalid rating "%s" specified, only "g", "pg", "r", or "x" are allowed to be used.'), $rating);
+			throw new InvalidArgumentException(sprintf('Invalid rating "%s" specified, only "g", "pg", "r", or "x" are allowed to be used.', $rating));
 		}
 
 		$this->max_rating = $rating;
