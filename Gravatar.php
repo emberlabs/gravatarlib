@@ -88,17 +88,17 @@ class Gravatar
 		// Wipe out the param cache.
 		$this->param_cache = NULL;
 
-		if(!ctype_digit($size))
+		if(!is_int($size) && !ctype_digit($size))
 		{
 			throw new InvalidArgumentException('Avatar size specified must be an integer');
 		}
 
-		if($size > 512 || $size < 0)
-		{
-			throw new InvalidArgumentException('Avatar size must be greater than 0 pixels and less than 512 pixels');
-		}
-
 		$this->size = (int) $size;
+
+		if($this->size > 512 || $this->size < 0)
+		{
+			throw new InvalidArgumentException('Avatar size must be within 0 pixels and 512 pixels');
+		}
 
 		return $this;
 	}
