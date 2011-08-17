@@ -221,9 +221,10 @@ class Gravatar
 	/**
 	 * Build the avatar URL based on the provided email address.
 	 * @param string $email - The email to get the gravatar for.
+	 * @param string $hash_email - Should we hash the $email variable?  (Useful if the email address has a hash stored already)
 	 * @return string - The XHTML-safe URL to the gravatar.
 	 */
-	public function buildGravatarURL($email)
+	public function buildGravatarURL($email, $hash_email = true)
 	{
 		// Start building the URL, and deciding if we're doing this via HTTPS or HTTP.
 		if($this->usingSecureImages())
@@ -236,7 +237,14 @@ class Gravatar
 		}
 
 		// Tack the email hash onto the end.
-		$url .= $this->getEmailHash($email);
+		if($hash_email == true)
+		{
+			$url .= $this->getEmailHash($email);
+		}
+		else
+		{
+			$url .= $email;
+		}
 
 		// Check to see if the param_cache property has been populated yet
 		if($this->param_cache === NULL)
@@ -273,9 +281,9 @@ class Gravatar
 	 * ...Yeah, it's just an alias of buildGravatarURL.  This is just to make it easier to use as a twig asset.
 	 * @see \Codebite\GravatarLib\Gravatar::buildGravatarURL()
 	 */
-	public function get($email)
+	public function get($email, $hash_email = true)
 	{
 		// Just an alias.  Makes it easy to use this as a twig asset.
-		return $this->buildGravatarURL($email);
+		return $this->buildGravatarURL($email, $hash_email);
 	}
 }
