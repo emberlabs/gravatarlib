@@ -143,7 +143,7 @@ class Gravatar
 			}
 			else
 			{
-				$this->default_image = $image;
+				$this->default_image = urlencode($image);
 			}
 		}
 		else
