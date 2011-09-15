@@ -19,7 +19,7 @@
  *
  */
 
-namespace Emberlabs\GravatarLib;
+namespace emberlabs\GravatarLib;
 use \InvalidArgumentException;
 
 /**
@@ -79,7 +79,7 @@ class Gravatar
 	/**
 	 * Set the avatar size to use.
 	 * @param integer $size - The avatar size to use, must be less than 512 and greater than 0.
-	 * @return \Emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
+	 * @return \emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
 	 *
 	 * @throws \InvalidArgumentException
 	 */
@@ -115,7 +115,7 @@ class Gravatar
 	/**
 	 * Set the default image to use for avatars.
 	 * @param mixed $image - The default image to use. Use boolean false for the gravatar default, a string containing a valid image URL, or a string specifying a recognized gravatar "default".
-	 * @return \Emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
+	 * @return \emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
 	 *
 	 * @throws \InvalidArgumentException
 	 */
@@ -166,7 +166,7 @@ class Gravatar
 	/**
 	 * Set the maximum allowed rating for avatars.
 	 * @param string $rating - The maximum rating to use for avatars ('g', 'pg', 'r', 'x').
-	 * @return \Emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
+	 * @return \emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
 	 *
 	 * @throws \InvalidArgumentException
 	 */
@@ -198,7 +198,7 @@ class Gravatar
 
 	/**
 	 * Enable the use of the secure protocol for image URLs.
-	 * @return \Emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
+	 * @return \emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
 	 */
 	public function enableSecureImages()
 	{
@@ -209,7 +209,7 @@ class Gravatar
 
 	/**
 	 * Disable the use of the secure protocol for image URLs.
-	 * @return \Emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
+	 * @return \emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
 	 */
 	public function disableSecureImages()
 	{
@@ -279,7 +279,7 @@ class Gravatar
 
 	/**
 	 * ...Yeah, it's just an alias of buildGravatarURL.  This is just to make it easier to use as a twig asset.
-	 * @see \Emberlabs\GravatarLib\Gravatar::buildGravatarURL()
+	 * @see \emberlabs\GravatarLib\Gravatar::buildGravatarURL()
 	 */
 	public function get($email, $hash_email = true)
 	{
