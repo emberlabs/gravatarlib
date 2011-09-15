@@ -4,7 +4,7 @@ GravatarLib is a small library intended to provide easy integration of gravatar-
 
 ## copyright
 
-(c) 2011 Damian Bushong
+(c) 2011 emberlabs.org
 
 ## license
 
@@ -17,14 +17,14 @@ This library is licensed under the MIT license; you can find a full copy of the 
 
 ## usage
 
-We'll assume you're using this git repository as a git submodule, and have it located at `includes/Codebite/GravatarLib/` according to namespacing rules, for easy autoloading.
+We'll assume you're using this git repository as a git submodule, and have it located at `includes/Emberlabs/GravatarLib/` according to namespacing rules, for easy autoloading.
 
 ### general example
 
 ``` php
 	<?php
-	include __DIR__ . '/includes/Codebite/GravatarLib/Gravatar.php';
-    $gravatar = new \Codebite\GravatarLib\Gravatar();
+	include __DIR__ . '/includes/Emberlabs/GravatarLib/Gravatar.php';
+    $gravatar = new \Emberlabs\GravatarLib\Gravatar();
 	// example: setting default image and maximum size
 	$gravatar->setDefaultImage('mm')
 		->setAvatarSize(150);
@@ -36,7 +36,7 @@ We'll assume you're using this git repository as a git submodule, and have it lo
 ### setting the default image
 
 Gravatar provides several pre-fabricated default images for use when the email address provided does not have a gravatar or when the gravatar specified exceeds your maximum allowed content rating.
-The provided images are 'mm', 'identicon', 'monsterid', and 'wavatar'.  To set the default iamge to use on your site, use the method `\Codebite\GravatarLib\Gravatar->setDefaultImage()`
+The provided images are 'mm', 'identicon', 'monsterid', and 'wavatar'.  To set the default iamge to use on your site, use the method `\Emberlabs\GravatarLib\Gravatar->setDefaultImage()`
 In addition, you can also set your own default image to be used by providing a valid URL to the image you wish to use.
 
 Here are a couple of examples...
@@ -57,7 +57,7 @@ If an invalid default image is specified (both an invalid prefab default image a
 ### setting avatar size
 
 Gravatar allows avatar images ranging from 1px to 512px in size -- and you, the developer or site administrator can specify the exact size of avatar that you want.
-By default, the avatar size provided is 80px.  To set the avatar size for use on your site, use the method `\Codebite\GravatarLib\Gravatar->setAvatarSize()`, and specify the avatar size with an integer representing the size in pixels.
+By default, the avatar size provided is 80px.  To set the avatar size for use on your site, use the method `\Emberlabs\GravatarLib\Gravatar->setAvatarSize()`, and specify the avatar size with an integer representing the size in pixels.
 
 An example of setting the avatar size is provided below:
 
@@ -73,7 +73,7 @@ If an invalid size (less than 1, greater than 512) or a non-integer value is spe
 ### setting the maximum content rating
 
 Gravatar provides four levels for rating avatars by, which are named similar to entertainment media ratings scales used in the United States.  They are, by order of severity (first is safe for everyone to see, last is explicit), "g", "pg", "r", and "x".
-By default, the maximum content rating is set to "g".  You can set the maximum allowable rating on avatars embedded within your site by using the method `\Codebite\GravatarLib\Gravatar->setMaxRating()`.  Please note that any avatars that do not fall under your maximum content rating will be replaced with the default image you have specified.
+By default, the maximum content rating is set to "g".  You can set the maximum allowable rating on avatars embedded within your site by using the method `\Emberlabs\GravatarLib\Gravatar->setMaxRating()`.  Please note that any avatars that do not fall under your maximum content rating will be replaced with the default image you have specified.
 
 Here's an example of how to set the maximum content rating:
 
@@ -89,8 +89,8 @@ If an invalid maximum rating is specified, this method will throw an exception o
 ### enabling secure images
 
 If your site is served over HTTPS, you'll likely want to serve gravatars over HTTPS as well to avoid "mixed content warnings".
-To enable "secure images" mode, call the method `\Codebite\GravatarLib\Gravatar->enableSecureImages()` before generating any gravatar URLs.
-To check to see if you are using "secure images" mode, call the method `\Codebite\GravatarLib\Gravatar->usingSecureImages()`, which will return a boolean value regarding whether or not secure images mode is enabled.
+To enable "secure images" mode, call the method `\Emberlabs\GravatarLib\Gravatar->enableSecureImages()` before generating any gravatar URLs.
+To check to see if you are using "secure images" mode, call the method `\Emberlabs\GravatarLib\Gravatar->usingSecureImages()`, which will return a boolean value regarding whether or not secure images mode is enabled.
 
 ### twig integration
 
@@ -101,9 +101,9 @@ When you've got an instance of the Twig_Environment ready, add in your instantia
 ``` php
 	<?php
 	// include the lib file here, or use an autoloader if you wish
-	include __DIR__ . '/includes/Codebite/GravatarLib/Gravatar.php';
+	include __DIR__ . '/includes/Emberlabs/GravatarLib/Gravatar.php';
 	// instantiate the gravatar library object
-    $gravatar = new \Codebite\GravatarLib\Gravatar();
+    $gravatar = new \Emberlabs\GravatarLib\Gravatar();
 
 	// ... do whatever you want with your settings here
 
