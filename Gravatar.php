@@ -134,7 +134,7 @@ class Gravatar
 
 		// Check $image against recognized gravatar "defaults", and if it doesn't match any of those we need to see if it is a valid URL.
 		$_image = strtolower($image);
-		$valid_defaults = array('404' => 1, 'mm' => 1, 'identicon' => 1, 'monsterid' => 1, 'wavatar' => 1);
+		$valid_defaults = array('404' => 1, 'mm' => 1, 'identicon' => 1, 'monsterid' => 1, 'wavatar' => 1, 'retro' => 1);
 		if(!isset($valid_defaults[$_image]))
 		{
 			if(!filter_var($image, FILTER_VALIDATE_URL))
@@ -237,13 +237,17 @@ class Gravatar
 		}
 
 		// Tack the email hash onto the end.
-		if($hash_email == true)
+		if($hash_email == true && !empty($email))
 		{
 			$url .= $this->getEmailHash($email);
 		}
-		else
+		elseif(!empty($email))
 		{
 			$url .= $email;
+		}
+		else
+		{
+			$url .= str_repeat('0', 32);
 		}
 
 		// Check to see if the param_cache property has been populated yet
@@ -262,8 +266,15 @@ class Gravatar
 			$this->params_cache = (!empty($params)) ? '?' . implode('&amp;', $params) : '';
 		}
 
+		// Handle "null" gravatar requests.
+		$tail = '';
+		if(empty($email))
+		{
+			$tail = !empty($this->params_cache) ? '&amp;f=y' : '?f=y';
+		}
+
 		// And we're done.
-		return $url . $this->params_cache;
+		return $url . $this->params_cache . $tail;
 	}
 
 	/**

@@ -36,7 +36,7 @@ We'll assume you're using this git repository as a git submodule, and have it lo
 ### setting the default image
 
 Gravatar provides several pre-fabricated default images for use when the email address provided does not have a gravatar or when the gravatar specified exceeds your maximum allowed content rating.
-The provided images are 'mm', 'identicon', 'monsterid', and 'wavatar'.  To set the default iamge to use on your site, use the method `\emberlabs\GravatarLib\Gravatar->setDefaultImage()`
+The provided images are 'mm', 'identicon', 'monsterid', 'retro', and 'wavatar'.  To set the default iamge to use on your site, use the method `\emberlabs\GravatarLib\Gravatar->setDefaultImage()`
 In addition, you can also set your own default image to be used by providing a valid URL to the image you wish to use.
 
 Here are a couple of examples...
