@@ -33,6 +33,19 @@ We'll assume you're using this git repository as a git submodule, and have it lo
 	$avatar = $gravatar->buildGravatarURL('someemail@domain.com');
 ```
 
+### composer example
+
+If you're using this package via composer, the usage will be almost the same, except you won't need the include and you'll need to call the class with a lower case file name. See below.
+
+``` php
+	<?php
+	
+	$gravatar = new \emberlabs\gravatarlib\Gravatar();
+	
+	//Same as above
+
+```
+
 ### setting the default image
 
 Gravatar provides several pre-fabricated default images for use when the email address provided does not have a gravatar or when the gravatar specified exceeds your maximum allowed content rating.
