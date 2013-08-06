@@ -21,8 +21,8 @@
     },
     "autoload": {
         "psr-0": {
-            "emberlabs\\gravatarlib\\": ""
+            "emberlabs\\GravatarLib\\": ""
         }
     },
-    "target-dir" : "emberlabs/gravatarlib"
+    "target-dir" : "emberlabs/GravatarLib"
 }
