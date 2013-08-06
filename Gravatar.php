@@ -263,14 +263,14 @@ class Gravatar
 			}
 
 			// Stuff the request params into the param_cache property for later reuse
-			$this->params_cache = (!empty($params)) ? '?' . implode('&amp;', $params) : '';
+			$this->params_cache = (!empty($params)) ? '?' . implode('&', $params) : '';
 		}
 
 		// Handle "null" gravatar requests.
 		$tail = '';
 		if(empty($email))
 		{
-			$tail = !empty($this->params_cache) ? '&amp;f=y' : '?f=y';
+			$tail = !empty($this->params_cache) ? '&f=y' : '?f=y';
 		}
 
 		// And we're done.
