@@ -63,8 +63,7 @@ class Gravatar
 	/**#@+
 	 * @var string - URL constants for the avatar images
 	 */
-	const HTTP_URL = 'http://www.gravatar.com/avatar/';
-	const HTTPS_URL = 'https://secure.gravatar.com/avatar/';
+	const GRAVATAR_URL = 'https://www.gravatar.com/avatar/';
 	/**#@-*/
 
 	/**
@@ -134,7 +133,7 @@ class Gravatar
 
 		// Check $image against recognized gravatar "defaults", and if it doesn't match any of those we need to see if it is a valid URL.
 		$_image = strtolower($image);
-		$valid_defaults = array('404' => 1, 'mm' => 1, 'identicon' => 1, 'monsterid' => 1, 'wavatar' => 1, 'retro' => 1);
+		$valid_defaults = array('404' => 1, 'mp' => 1, 'identicon' => 1, 'monsterid' => 1, 'wavatar' => 1, 'retro' => 1, 'robohash' => 1, 'blank' => 1);
 		if(!isset($valid_defaults[$_image]))
 		{
 			if(!filter_var($image, FILTER_VALIDATE_URL))
@@ -227,14 +226,7 @@ class Gravatar
 	public function buildGravatarURL($email, $hash_email = true)
 	{
 		// Start building the URL, and deciding if we're doing this via HTTPS or HTTP.
-		if($this->usingSecureImages())
-		{
-			$url = static::HTTPS_URL;
-		}
-		else
-		{
-			$url = static::HTTP_URL;
-		}
+		$url = static::GRAVATAR_URL;
 
 		// Tack the email hash onto the end.
 		if($hash_email == true && !empty($email))
@@ -263,14 +255,14 @@ class Gravatar
 			}
 
 			// Stuff the request params into the param_cache property for later reuse
-			$this->params_cache = (!empty($params)) ? '?' . implode('&amp;', $params) : '';
+			$this->params_cache = (!empty($params)) ? '?' . implode('&', $params) : '';
 		}
 
 		// Handle "null" gravatar requests.
 		$tail = '';
 		if(empty($email))
 		{
-			$tail = !empty($this->params_cache) ? '&amp;f=y' : '?f=y';
+			$tail = !empty($this->params_cache) ? '&f=y' : '?f=y';
 		}
 
 		// And we're done.
