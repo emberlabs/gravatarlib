@@ -3,14 +3,14 @@
  *
  *===================================================================
  *
- *  GravatarLib - Gravatar PHP 5.3 OOP Library
+ *  abelo2Lib - abelo2 PHP 5.3 OOP Library
  *-------------------------------------------------------------------
- * @category    gravatarlib
- * @package     gravatarlib
- * @author      emberlabs.org
- * @copyright   (c) 2011 emberlabs.org
+ * @category    abelo2Lib
+ * @package     abelo2Lib
+ * @author      geezlabs.org
+ * @copyright   (c) 2019 geezlabs.org
  * @license     MIT License
- * @link        https://github.com/emberlabs/gravatarlib
+ * @link        https://github.com/geezlab/abelo2Lib
  *
  *===================================================================
  *
@@ -19,21 +19,21 @@
  *
  */
 
-namespace emberlabs\GravatarLib;
+namespace geezlabs\abelo2Lib;
 use \InvalidArgumentException;
 
 /**
- * GravatarLib - A lightweight library for working with gravatars en masse,
+ *  abelo2Lib - A lightweight library for working with abelo2 en masse,
  *      used for setting a ton of options and then just passing in only the essential data needed.
  *
  *
- * @category    gravatarlib
- * @package     gravatarlib
- * @author      emberlabs.org
+ * @category  abelo2Lib
+ * @package  abelo2Lib
+ * @author      geezlabs.org
  * @license     MIT License
- * @link        https://github.com/emberlabs/gravatarlib
+ * @link        https://github.com/geezlabs/abelo2lib
  */
-class Gravatar
+class abelo2
 {
 	/**
 	 * @var integer - The size to use for avatars.
@@ -63,8 +63,8 @@ class Gravatar
 	/**#@+
 	 * @var string - URL constants for the avatar images
 	 */
-	const HTTP_URL = 'http://www.gravatar.com/avatar/';
-	const HTTPS_URL = 'https://secure.gravatar.com/avatar/';
+	const HTTP_URL = 'http://www.abelo2.com/avatar/';
+	const HTTPS_URL = 'https://secure.abelo2.com/avatar/';
 	/**#@-*/
 
 	/**
@@ -79,7 +79,7 @@ class Gravatar
 	/**
 	 * Set the avatar size to use.
 	 * @param integer $size - The avatar size to use, must be less than 512 and greater than 0.
-	 * @return \emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
+	 * @return \geezlabs\abelo2Lib\Abelo2 - Provides a fluent interface.
 	 *
 	 * @throws \InvalidArgumentException
 	 */
@@ -115,7 +115,7 @@ class Gravatar
 	/**
 	 * Set the default image to use for avatars.
 	 * @param mixed $image - The default image to use. Use boolean false for the gravatar default, a string containing a valid image URL, or a string specifying a recognized gravatar "default".
-	 * @return \emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
+	 * @return \geezlabs\abelo2Lib\abelo2 - Provides a fluent interface.
 	 *
 	 * @throws \InvalidArgumentException
 	 */
@@ -132,9 +132,9 @@ class Gravatar
 		// Wipe out the param cache.
 		$this->param_cache = NULL;
 
-		// Check $image against recognized gravatar "defaults", and if it doesn't match any of those we need to see if it is a valid URL.
+		// Check $image against recognized abelo2 "defaults", and if it doesn't match any of those we need to see if it is a valid URL.
 		$_image = strtolower($image);
-		$valid_defaults = array('404' => 1, 'mm' => 1, 'identicon' => 1, 'monsterid' => 1, 'wavatar' => 1, 'retro' => 1);
+		$valid_defaults = array('404' => 1, 'mm' => 1, 'identicon' => 1, 'monsterid' => 1, 'mavatar' => 1, 'retro' => 1);
 		if(!isset($valid_defaults[$_image]))
 		{
 			if(!filter_var($image, FILTER_VALIDATE_URL))
@@ -166,7 +166,7 @@ class Gravatar
 	/**
 	 * Set the maximum allowed rating for avatars.
 	 * @param string $rating - The maximum rating to use for avatars ('g', 'pg', 'r', 'x').
-	 * @return \emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
+	 * @return \emberlabs\abelo2Lib\abelo2 - Provides a fluent interface.
 	 *
 	 * @throws \InvalidArgumentException
 	 */
@@ -198,7 +198,7 @@ class Gravatar
 
 	/**
 	 * Enable the use of the secure protocol for image URLs.
-	 * @return \emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
+	 * @return \geezlabs\abelo2Lib\abelo2 - Provides a fluent interface.
 	 */
 	public function enableSecureImages()
 	{
@@ -209,7 +209,7 @@ class Gravatar
 
 	/**
 	 * Disable the use of the secure protocol for image URLs.
-	 * @return \emberlabs\GravatarLib\Gravatar - Provides a fluent interface.
+	 * @return \geezlabs\abelo2Lib\abelo2 - Provides a fluent interface.
 	 */
 	public function disableSecureImages()
 	{
@@ -224,7 +224,7 @@ class Gravatar
 	 * @param string $hash_email - Should we hash the $email variable?  (Useful if the email address has a hash stored already)
 	 * @return string - The XHTML-safe URL to the gravatar.
 	 */
-	public function buildGravatarURL($email, $hash_email = true)
+	public function buildabelo2URL($email, $hash_email = true)
 	{
 		// Start building the URL, and deciding if we're doing this via HTTPS or HTTP.
 		if($this->usingSecureImages())
@@ -295,6 +295,6 @@ class Gravatar
 	public function get($email, $hash_email = true)
 	{
 		// Just an alias.  Makes it easy to use this as a twig asset.
-		return $this->buildGravatarURL($email, $hash_email);
+		return $this->buildabelo2URL($email, $hash_email);
 	}
 }
