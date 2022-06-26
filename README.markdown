@@ -24,7 +24,7 @@ We'll assume you're using this git repository as a git submodule, and have it lo
 ```php
 	<?php
 	include __DIR__ . '/includes/emberlabs/GravatarLib/Gravatar.php';
-  $gravatar = new \emberlabs\GravatarLib\Gravatar();
+  	$gravatar = new \emberlabs\GravatarLib\Gravatar();
 	// example: setting default image and maximum size
 	$gravatar->setDefaultImage('mm')->setAvatarSize(150);
 	// example: setting maximum allowed avatar rating
@@ -99,7 +99,7 @@ When you've got an instance of the Twig_Environment ready, add in your instantia
 	// include the lib file here, or use an autoloader if you wish
 	include __DIR__ . '/includes/emberlabs/GravatarLib/Gravatar.php';
 	// instantiate the gravatar library object
-  $gravatar = new \emberlabs\GravatarLib\Gravatar();
+  	$gravatar = new \emberlabs\GravatarLib\Gravatar();
 
 	// ... do whatever you want with your settings here
 
